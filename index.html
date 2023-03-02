@@ -13,34 +13,51 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.3/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 <body class="container mx-auto" onload="fetchData(6), toggleSpinner(true)">
+<!-- Header -->
     <header class="text-center">
         <h1 class="text-4xl font-bold my-6">AI Universe Hub</h1>
         <button class="px-6 py-3 text-white bg-[#EB5757] hover:bg-[#dc2626] rounded-xl">Sort By Date</button>
     </header>
     <main>
-        <!-- Cards -->
+<!-- Cards -->
         <section id="cards-container" class="grid md:grid-cols-3 gap-6 my-10 justify-center items-center px-0">
             
         </section>
-        <!-- Modal -->
+<!-- Modal -->
         <section>   
             <input type="checkbox" id="my-modal-3" class="modal-toggle" />
             <div class="modal">
             <div class="modal-box relative">
                 <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                <h3 class="text-lg font-bold">Congratulations random Internet user!</h3>
-                <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+                <div id="modal-container" class="flex justify-center">
+                    <div class="">
+
+                    </div>
+                        <div class="">
+                            <div class="card w-96 bg-base-100 shadow-xl">
+                                <figure>
+                                    <img src="${data.image}" alt="Shoes" />
+                                </figure>
+                                <div class="card-body">
+                                <h2 class="card-title">
+                                    Shoes!
+                                    <div class="badge badge-secondary">NEW</div>
+                                </h2>
+                                <p>If a dog chews shoes whose shoes does he choose?</p>
+                                </div>
+                            </div>
+                        </div>
+                </div>
             </div>
             </div>
         </section>
-        <!-- Show More -->
+<!-- Show More -->
         <section id="show-all" class="text-center hidden">
             <button id="btn-show-more" class="px-6 py-3 text-white bg-[#EB5757] hover:bg-[#dc2626] rounded-xl">Show More</button>
         </section>
-        <!-- Spinner/Loading -->
-        <!-- <section id="spinner" class="flex justify-center hidden">
+<!-- Spinner/Loading -->
+        <section id="spinner" class="flex justify-center hidden">
             <div class="w-64"> 
                 <button type="button" class="bg-indigo-500 text-xl">
                     <svg class="animate-spin h-5 w-5 mr-3 p-2 flex text-black-500 bg-sky-500 rounded-sm" viewBox="0 0 24 24"></svg> 
@@ -48,10 +65,10 @@
                 </button>
                 <progress class="progress w-32">Processing...</progress>
             </div>
-        </section> -->
+        </section>
     </main>
 
-    <!-- Script -->
+<!-- Script -->
     <script src="JS/script.js"></script>
 </body>
 

@@ -79,19 +79,28 @@ const fetchAIDetails = async (id) => {
         console.log(data.data);
     }
     catch (error){
-        alert('Please connect to the server!')
+        alert('Please connect to the server!');
     }
 };
 
 const displayAIDetails = (data) =>{
     console.log(data);
-    // const modalTitle =
-}
+    const modalContainer = document.getElementById('modal-container');
+    // modalContainer.innerText = `
+    //     <div class="">
+    //         <div class="card w-96 bg-base-100 shadow-xl">
+    //             <figure>
+    //                 <img src="${data.image}" alt="Shoes" />
+    //             </figure>
+    //             <div class="card-body">
+    //             <h2 class="card-title">
+    //                 Shoes!
+    //                 <div class="badge badge-secondary">NEW</div>
+    //             </h2>
+    //             <p>If a dog chews shoes whose shoes does he choose?</p>
+    //             </div>
+    //         </div>
+    //     </div>
+    // `;
+};
 
-
-
-
-
-// <p class="text-[#585858]">${singleData.}</p>
-// <p class="text-[#585858]">Price:${singleData.}</p>
-// <p class="text-[#585858] mb-5"> Quantity:${singleData.}</p>
