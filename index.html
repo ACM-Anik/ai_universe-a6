@@ -20,24 +20,8 @@
         <button class="px-6 py-3 text-white bg-[#EB5757] hover:bg-[#dc2626] rounded-xl">Sort By Date</button>
     </header>
     <main>
-        <section class="grid grid-cols-3 gap-5 my-10">
-            <div class="card card-compact w-10/12 bg-base-100 shadow-xl border">
-                <figure><img class="h-[200px] w-full p-4 rounded" src="/img/coffee.jpg" alt="" /></figure>
-                <div class="card-body">
-                    <h2 id="coffee" class="text-xl font-bold">Coffee JS</h2>
-                    <p class="text-[#585858]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, corporis.</p>
-                    <p class="text-[#585858]">Price: $<span id="coffee-price">110</span></p>
-                    <p class="text-[#585858] mb-5"> Quantity: <span id="coffee-quantity"> 5</span></p>
-
-                    <div class="card-actions justify-between items-center border-t border-[#585858] py-3">
-                        <div>
-                            <h3 class="text-xl font-bold">ChatGPT</h3>
-                            <p class="text-base">Date:</p>
-                        </div>
-                        <button id="btn-coffee" class=" rounded"><i class="fas fa-arrow-right text-[#EB5757]"></i></button>
-                    </div>
-                </div>
-            </div>
+        <section id="cards-container" class="grid grid-cols-3 gap-8 my-10 justify-center items-center px-0">
+            
         </section>
         <!-- Show More -->
         <section class="text-center ">
