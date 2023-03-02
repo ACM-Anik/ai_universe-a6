@@ -3,7 +3,7 @@ const fetchData = (dataLimit) => {
     fetch(url)
         .then(res => res.json())
         .then(data => displayData(data.data.tools, dataLimit));
-}
+};
 
 const displayData = (data, dataLimit) => {
     // console.log(data);
@@ -50,13 +50,15 @@ const displayData = (data, dataLimit) => {
         container.appendChild(div);
         toggleSpinner(false);
     });
-}
+};
 
+// Show More/All:
 document.getElementById('btn-show-more').addEventListener('click', function () {
     fetchData();
     toggleSpinner(true);
 });
 
+// Spinner:
 const toggleSpinner = isLoading =>{
     const spinner =document.getElementById('spinner');
     if(isLoading){
@@ -65,10 +67,26 @@ const toggleSpinner = isLoading =>{
     else{
         spinner.classList.add('hidden');
     }
+};
+
+// Data By Id:
+const fetchAIDetails = async (id) => {
+    const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        displayAIDetails(data.data.tools);
+        console.log(data.data);
+    }
+    catch (error){
+        alert('Please connect to the server!')
+    }
+};
+
+const displayAIDetails = (data) =>{
+    console.log(data);
+    // const modalTitle =
 }
-
-
-
 
 
 
