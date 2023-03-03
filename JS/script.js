@@ -18,29 +18,31 @@ const displayData = (data, dataLimit) => {
     else {
         showAll.classList.add('d-none');
     }
-    document.getElementById('btn-sort').addEventListener('click', function(){
-           const sortBtn = data.sort(sorting);
-        });
-    data.forEach(singleData => {
-        
+    
+    document.getElementById('btn-sort').addEventListener('click', function (){
+        const sortArray = data.sort(sorting);
+        console.log(sortArray);
+    });
+    
+    data.forEach((e) => {
         const div = document.createElement('div');
         div.innerHTML = `
             <div class="d-flex justify-center">
                 <div class="card shadow-lg border-0" style="width: 22rem; height: 500px">
-                        <img src="${singleData.image}" style="height: 200px" class="card-img-top p-3" alt="...">
+                        <img src="${e.image}" style="height: 200px" class="card-img-top p-3" alt="...">
                     <div class="card-body">
                         <h4 class="fw-semibold">Features</h4>
                         <ol class="list-decimal ps-3">
-                            <li class="fw-semibold text-secondary">${singleData.features[0] ? singleData.features[0] : "Not Available"}</li>
-                            <li class="fw-semibold text-secondary">${singleData.features[1] ? singleData.features[1] : "Not Available"}</li>
-                            <li class="fw-semibold text-secondary">${singleData.features[2] ? singleData.features[2] : "Not Available"}</li>
-                            <li class="fw-semibold text-secondary">${singleData.features[3] ? singleData.features[3] : "Not Available"}</li>
+                            <li class="fw-semibold text-secondary">${e.features[0] ? e.features[0] : "Not Available"}</li>
+                            <li class="fw-semibold text-secondary">${e.features[1] ? e.features[1] : "Not Available"}</li>
+                            <li class="fw-semibold text-secondary">${e.features[2] ? e.features[2] : "Not Available"}</li>
+                            <li class="fw-semibold text-secondary">${e.features[3] ? e.features[3] : "Not Available"}</li>
                         </ol>
                         <div class="justify-content-between align-items-center py-1 border-top">
-                            <h4 class=" fw-semibold">${singleData.name}</h4>
+                            <h4 class=" fw-semibold">${e.name}</h4>
                             <div class="d-flex justify-content-between align-items-center">
-                                <p class="fw-semibold text-secondary"><i class="fas fa-calendar"></i> ${singleData.published_in}</p>
-                                <a data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="fetchAIDetails('${singleData.id}')"><i class="fas fa-arrow-right text-danger"></i></a>
+                                <p class="fw-semibold text-secondary"><i class="fas fa-calendar"></i> ${e.published_in}</p>
+                                <a data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="fetchAIDetails('${e.id}')"><i class="fas fa-arrow-right text-danger"></i></a>
                             </div>                    
                         </div>
                     </div>
@@ -68,7 +70,6 @@ const sorting = (a, b) =>{
         return 0;
     }
 } ;
-
 
 
 
@@ -101,13 +102,12 @@ const fetchAIDetails = async id => {
 
 // Display Data By Id:
 const displayAIDetails = (data) =>{
-    console.log(data);
+    // console.log(data);
     const modalContainer = document.getElementById('modal-container');
     const {accuracy} = data;
     const score = accuracy.score;
     const percentage = score * 100 + "% Accuracy";  
     
-
     modalContainer.innerHTML = `
         <div class="col-md-6 border border-danger rounded p-3 shadow" style="background-color: rgb(249, 227, 227)">
         <h5 class="fw-semibold">${data.description }</h5>
@@ -135,8 +135,8 @@ const displayAIDetails = (data) =>{
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="card shadow border-0" style="width: 22rem; height: 28rem">
+        <div class="col-md-6 px-2">
+            <div class="card shadow" style="width: 22rem; height: 28rem">
                 <img src="${data.image_link[0] ? data.image_link[0] : "Image Didn't Found"}" class="card-img-top p-3" style="height: 260px" alt="...">
                 <div class="card-body">
                     <h5 class="fw-bold">${data.input_output_examples === null ? "Can You Give Any Example?" : data.input_output_examples[0].input}</h5>
