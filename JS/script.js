@@ -9,7 +9,7 @@ const displayData = (data, dataLimit) => {
     // console.log(data);
     const container = document.getElementById('cards-container');
     container.innerHTML = "";
-    // Display 6
+    // Display 6 data:
     const showAll = document.getElementById('show-all');
     if (dataLimit && data.length > 6) {
         data = data.slice(0, 6);
@@ -18,7 +18,11 @@ const displayData = (data, dataLimit) => {
     else {
         showAll.classList.add('d-none');
     }
+    document.getElementById('btn-sort').addEventListener('click', function(){
+           const sortBtn = data.sort(sorting);
+        });
     data.forEach(singleData => {
+        
         const div = document.createElement('div');
         div.innerHTML = `
             <div class="d-flex justify-center">
@@ -45,6 +49,7 @@ const displayData = (data, dataLimit) => {
         `;
         container.appendChild(div);
         toggleSpinner(false);
+        
     });
 };
 
@@ -64,9 +69,7 @@ const sorting = (a, b) =>{
     }
 } ;
 
-// document,getElementById('btn-sort').addEventListener('click', function(){
-//     // console.log(data.sort(sorting));
-// });
+
 
 
 // Show More/All:
