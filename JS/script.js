@@ -27,15 +27,15 @@ const displayData = (data, dataLimit) => {
                     <div class="card-body">
                         <h4 class="fw-semibold">Features</h4>
                         <ol class="list-decimal ps-3">
-                            <li class="text-[#585858]">${singleData.features[0] ? singleData.features[0] : "Not Available"}</li>
-                            <li class="text-[#585858]">${singleData.features[1] ? singleData.features[1] : "Not Available"}</li>
-                            <li class="text-[#585858]">${singleData.features[2] ? singleData.features[2] : "Not Available"}</li>
-                            <li class="text-[#585858]">${singleData.features[3] ? singleData.features[3] : "Not Available"}</li>
+                            <li class="fw-semibold text-secondary">${singleData.features[0] ? singleData.features[0] : "Not Available"}</li>
+                            <li class="fw-semibold text-secondary">${singleData.features[1] ? singleData.features[1] : "Not Available"}</li>
+                            <li class="fw-semibold text-secondary">${singleData.features[2] ? singleData.features[2] : "Not Available"}</li>
+                            <li class="fw-semibold text-secondary">${singleData.features[3] ? singleData.features[3] : "Not Available"}</li>
                         </ol>
                         <div class="justify-content-between align-items-center py-1 border-top">
                             <h4 class=" fw-semibold">${singleData.name}</h4>
                             <div class="d-flex justify-content-between align-items-center">
-                                <p class=""><i class="fas fa-calendar"></i> ${singleData.published_in}</p>
+                                <p class="fw-semibold text-secondary"><i class="fas fa-calendar"></i> ${singleData.published_in}</p>
                                 <a data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="fetchAIDetails('${singleData.id}')"><i class="fas fa-arrow-right text-danger"></i></a>
                             </div>                    
                         </div>
@@ -109,9 +109,9 @@ const displayAIDetails = (data) =>{
         <div class="col-md-6 border border-danger rounded p-3 shadow" style="background-color: rgb(249, 227, 227)">
         <h5 class="fw-semibold">${data.description }</h5>
         <div class="d-flex justify-content-center g-3 mt-3">
-                <p class="bg-white p-2 mx-2 rounded">${data.pricing === null?" Free Of Cost/Basic" : data.pricing[0].price}</p>
-                <p class="bg-white p-2 mx-2 rounded">${data.pricing === null ? "Free Of Cost/Pro" : data.pricing[1].price}</p>
-                <p class="bg-white p-2 mx-2 rounded">${data.pricing === null ? "Free Of Cost/Enterprise" : data.pricing[2].price}</p>
+                <p class="fs-6 bg-white text-success p-2 mx-2 rounded" style="height: 85px">${data.pricing === null?" Free Of Cost/Basic" : data.pricing[0].price}</p>
+                <p class="fs-6 bg-white text-warning p-2 mx-2 rounded" style="height: 85px">${data.pricing === null ? "Free Of Cost/Pro" : data.pricing[1].price}</p>
+                <p class="fs-6 bg-white text-danger p-2 mx-2 rounded" style="height: 85px">${data.pricing === null ? "Free Of Cost/Enterprise" : data.pricing[2].price}</p>
             </div>
             <div class="d-flex justify-content-between">
                 <div>
@@ -136,7 +136,7 @@ const displayAIDetails = (data) =>{
             <div class="card shadow border-0" style="width: 22rem; height: 28rem">
                 <img src="${data.image_link[0] ? data.image_link[0] : "Image Didn't Found"}" class="card-img-top p-3" style="height: 260px" alt="...">
                 <div class="card-body">
-                    <h5 class="fw-bold">${data.input_output_examples === null ? "Can I help you?" : data.input_output_examples[0].input}</h5>
+                    <h5 class="fw-bold">${data.input_output_examples === null ? "Can You Give Any Example?" : data.input_output_examples[0].input}</h5>
                     <p >${data.input_output_examples === null? "No! Not Yet! Take A Break." : data.input_output_examples[0].output.slice(0, 173)}</p>
                 </div>
                 <div class="d-flex justify-content-end relative">
