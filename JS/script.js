@@ -13,35 +13,31 @@ const displayData = (data, dataLimit) => {
     const showAll = document.getElementById('show-all');
     if (dataLimit && data.length > 6) {
         data = data.slice(0, 6);
-        showAll.classList.remove('hidden');
+        showAll.classList.remove('d-none');
     }
     else {
-        showAll.classList.add('hidden');
+        showAll.classList.add('d-none');
     }
-
-
     data.forEach(singleData => {
         const div = document.createElement('div');
         div.innerHTML = `
-            <div class="flex justify-center">
-                <div class="card card-compact w-80 md:w-96 bg-base-100 shadow-xl">
-                    <figure>
-                        <img class="md:h-[260px] w-full p-5 rounded" src="${singleData.image}" alt="" />
-                    </figure>
+            <div class="d-flex justify-center">
+                <div class="card" style="width: 22rem; height: 500px">
+                        <img class="p-3" src="${singleData.image}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h2 class="text-xl font-bold">Features</h2>
-                        <ol class="list-decimal ml-4">
+                        <h3 class="text- fw-semibold">Features</h3>
+                        <ol class="list-decimal">
                             <li class="text-[#585858]">${singleData.features[0] ? singleData.features[0] : "Not Available"}</li>
                             <li class="text-[#585858]">${singleData.features[1] ? singleData.features[1] : "Not Available"}</li>
                             <li class="text-[#585858]">${singleData.features[2] ? singleData.features[2] : "Not Available"}</li>
                             <li class="text-[#585858]">${singleData.features[3] ? singleData.features[3] : "Not Available"}</li>
                         </ol>
-                        <div class="card-actions justify-between items-center border-t border-[#585858] py-3">
-                            <div>
-                                <h3 class="text-xl font-bold">${singleData.name}</h3>
-                                <p class="text-base"><i class="fas fa-calendar"></i> ${singleData.published_in}</p>
+                        <div class="justify-content-between align-items-center py-1">
+                            <h3 class=" fw-semibold">${singleData.name}</h3>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="fs-5"><i class="fas fa-calendar"></i> ${singleData.published_in}</p>
+                                <a data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="fetchAIDetails('${singleData.id}')"><i class="fas fa-arrow-right text-danger"></i></a>
                             </div>                    
-                            <label for="my-modal-3" class="text-2xl mt-5" onclick="fetchAIDetails('${singleData.id}')"><i class="fas fa-arrow-right text-[#EB5757]"></i></label>
                         </div>
                     </div>
                 </div>
@@ -62,10 +58,10 @@ document.getElementById('btn-show-more').addEventListener('click', function () {
 const toggleSpinner = isLoading =>{
     const spinner =document.getElementById('spinner');
     if(isLoading){
-        spinner.classList.remove('hidden');
+        spinner.classList.remove('d-none');
     }
     else{
-        spinner.classList.add('hidden');
+        spinner.classList.add('d-none');
     }
 };
 
@@ -86,21 +82,8 @@ const fetchAIDetails = async (id) => {
 const displayAIDetails = (data) =>{
     console.log(data);
     const modalContainer = document.getElementById('modal-container');
-    // modalContainer.innerText = `
-    //     <div class="">
-    //         <div class="card w-96 bg-base-100 shadow-xl">
-    //             <figure>
-    //                 <img src="${data.image}" alt="Shoes" />
-    //             </figure>
-    //             <div class="card-body">
-    //             <h2 class="card-title">
-    //                 Shoes!
-    //                 <div class="badge badge-secondary">NEW</div>
-    //             </h2>
-    //             <p>If a dog chews shoes whose shoes does he choose?</p>
-    //             </div>
-    //         </div>
-    //     </div>
-    // `;
+    modalContainer.innerText = `
+        
+    `;
 };
 
