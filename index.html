@@ -16,57 +16,33 @@
 
 </head>
 
-<body class="container mx-auto" onload="fetchData(6), toggleSpinner(true)">
-    <!-- Header -->
-    <header class="text-center my-5">
-        <h1 class="fs-1 fw-bold my-5">AI Universe Hub</h1>
-        <button class="btn btn-danger px-4 py-2 rounded-lg">Sort By Date</button>
-    </header>
-    <main>
-        <!-- Cards -->
-        <section id="cards-container" class="row row-cols-1 row-cols-md-3 g-4 my-5 justify-center items-center">
+    <body class="container mx-auto" onload="fetchData(6), toggleSpinner(true)">
+        <!-- Header -->
+        <header class="text-center my-4">
+            <h1 class="fs-1 fw-bold my-5">AI Universe Hub</h1>
+            <button class="btn btn-danger px-4 py-2 rounded-lg">Sort By Date</button>
+        </header>
+        <main>
+            <!-- Cards -->
+            <section id="cards-container" class="row row-cols-1 row-cols-md-3 g-4 my-5 justify-content-center align-items-center">
 
-        </section>
-        <!-- Modal -->
-        <section>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
+            </section>
+            <!-- Modal -->
+            <section>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <div class="modal-header border border-0 ">
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                            <div class="flex justify-center">
-                                <div>
-                                    <h3 class="text-xl font-bold">Description</h3>
-                                    <div class="flex justify-center">
-                                        <h4 class="bg-white p-5">$10/month Basic</h4>
-                                        <h4 class="bg-white p-5">$10/month Basic</h4>
-                                        <h4 class="bg-white p-5">$10/month Basic</h4>
-                                    </div>
-                                </div>
-                                <div class="card w-72 bg-base-100 shadow-xl">
-                                    <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" />
-                                    </figure>
-                                    <div class="card-body">
-                                        <h2 class="card-title">
-                                            Shoes!
-                                            <div class="badge badge-secondary">NEW</div>
-                                        </h2>
-                                        <p>If a dog chews shoes whose shoes does he choose?</p>
-                                    </div>
-                                </div>
+                        <div class="modal-body pt-0">
+                            <div id="modal-container" class="row g-4 m-4 mt-0">
+                                <!-- Dynamic body -->
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                    </div>
                     </div>
                 </div>
-            </div>
         </section>
         <!-- Show More -->
         <section id="show-all" class="text-center d-none">
