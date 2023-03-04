@@ -2,13 +2,20 @@ const fetchData = (dataLimit) => {
     const url = `https://openapi.programming-hero.com/api/ai/tools`;
     fetch(url)
         .then(res => res.json())
-        .then(data => displayData(data.data.tools, dataLimit));
+        .then(data =>{
+            if(data?.status){
+               displayData(data.data.tools, dataLimit); 
+            }else{
+                alert('Please Connect To Server.');
+            }
+        });          
 };
 
 const displayData = (data, dataLimit) => {
-    // console.log(data);
+    // console.log(data, dataLimit);
     const container = document.getElementById('cards-container');
     container.innerHTML = "";
+    
     // Display 6 data:
     const showAll = document.getElementById('show-all');
     if (dataLimit && data.length > 6) {
@@ -19,10 +26,10 @@ const displayData = (data, dataLimit) => {
         showAll.classList.add('d-none');
     }
     
-    document.getElementById('btn-sort').addEventListener('click', function (){
-        const sortArray = data.sort(sorting);
-        console.log(sortArray);
-    });
+    // // Sort Handler:
+    // document.getElementById('btn-sort').addEventListener('click', function (){
+    //     cardsSort(data);
+    // });
     
     data.forEach((e) => {
         const div = document.createElement('div');
@@ -42,7 +49,7 @@ const displayData = (data, dataLimit) => {
                             <h4 class=" fw-semibold">${e.name}</h4>
                             <div class="d-flex justify-content-between align-items-center">
                                 <p class="fw-semibold text-secondary"><i class="fas fa-calendar"></i> ${e.published_in}</p>
-                                <a data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="fetchAIDetails('${e.id}')"><i class="fas fa-arrow-right text-danger"></i></a>
+                                <a class="p-3 fs-5 fw-bold" data-bs-toggle="modal" data-bs-target="#detailsModal" onclick="fetchAIDetails('${e.id}')"><i class="fas fa-arrow-right text-danger"></i></a>
                             </div>                    
                         </div>
                     </div>
@@ -57,19 +64,14 @@ const displayData = (data, dataLimit) => {
 
 
 // // Sort By Date:
-const sorting = (a, b) =>{
-    const dateA = new Date(a.published_in);
-    const dateB = new Date(b.published_in);
-    if(dateA > dateB){
-        return 1;
-    }
-    else if(dateA < dateB){
-        return -1;
-    }
-    else{
-        return 0;
-    }
-} ;
+const cardsSort = (array) => {
+    array.sort((a, b) => {
+        const dateA = new Date(a.published_in);
+        const dateB = new Date(b.published_in);
+        return dateB - dateA;
+    });
+    displayData(array);   
+};
 
 
 
@@ -78,6 +80,7 @@ document.getElementById('btn-show-more').addEventListener('click', function () {
     fetchData();
     toggleSpinner(true);
 });
+
 
 // Spinner:
 const toggleSpinner = isLoading =>{
@@ -89,6 +92,7 @@ const toggleSpinner = isLoading =>{
         spinner.classList.add('d-none');
     }
 };
+
 
 
 // Fetch Data By Id:
@@ -149,5 +153,5 @@ const displayAIDetails = (data) =>{
         </div>
     `;
 };
-// 
+
 
